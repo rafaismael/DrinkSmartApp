@@ -14,6 +14,8 @@
 		27849609254CCEB8004D76BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27849608254CCEB8004D76BC /* Assets.xcassets */; };
 		2784960C254CCEB8004D76BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2784960B254CCEB8004D76BC /* Preview Assets.xcassets */; };
 		2784960F254CCEB8004D76BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2784960D254CCEB8004D76BC /* LaunchScreen.storyboard */; };
+		27849618254CCEF6004D76BC /* Aux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27849617254CCEF6004D76BC /* Aux.swift */; };
+		2784961F254CDB53004D76BC /* DrinksType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2784961E254CDB53004D76BC /* DrinksType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		2784960B254CCEB8004D76BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2784960E254CCEB8004D76BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27849610254CCEB8004D76BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27849617254CCEF6004D76BC /* Aux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aux.swift; sourceTree = "<group>"; };
+		2784961E254CDB53004D76BC /* DrinksType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				278495FF254CCEB3004D76BC /* AppDelegate.swift */,
 				27849601254CCEB3004D76BC /* SceneDelegate.swift */,
 				27849603254CCEB3004D76BC /* ContentView.swift */,
+				2784961E254CDB53004D76BC /* DrinksType.swift */,
+				27849617254CCEF6004D76BC /* Aux.swift */,
 				27849608254CCEB8004D76BC /* Assets.xcassets */,
 				2784960D254CCEB8004D76BC /* LaunchScreen.storyboard */,
 				27849610254CCEB8004D76BC /* Info.plist */,
@@ -150,7 +156,9 @@
 			files = (
 				27849600254CCEB3004D76BC /* AppDelegate.swift in Sources */,
 				27849602254CCEB3004D76BC /* SceneDelegate.swift in Sources */,
+				27849618254CCEF6004D76BC /* Aux.swift in Sources */,
 				27849607254CCEB3004D76BC /* DrinkSmart.xcdatamodeld in Sources */,
+				2784961F254CDB53004D76BC /* DrinksType.swift in Sources */,
 				27849604254CCEB3004D76BC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var settings = GlobalString()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -28,7 +29,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+           
+            /* ALTERACAO
+            guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+                fatalError("Unable to read managed object context.")
+            }
+            */
+            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(settings))
+            //window.rootViewController = UIHostingController(rootView: ContentView().environment(\.managedObjectContext, context))
+           //ALTERACAO
+            
             self.window = window
             window.makeKeyAndVisible()
         }
