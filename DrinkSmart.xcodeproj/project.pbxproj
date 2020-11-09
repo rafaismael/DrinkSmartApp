@@ -16,6 +16,7 @@
 		2784960F254CCEB8004D76BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2784960D254CCEB8004D76BC /* LaunchScreen.storyboard */; };
 		27849618254CCEF6004D76BC /* Aux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27849617254CCEF6004D76BC /* Aux.swift */; };
 		2784961F254CDB53004D76BC /* DrinksType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2784961E254CDB53004D76BC /* DrinksType.swift */; };
+		27E7D98D2559A8B00018A91E /* BeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7D98C2559A8B00018A91E /* BeerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		27849610254CCEB8004D76BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27849617254CCEF6004D76BC /* Aux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aux.swift; sourceTree = "<group>"; };
 		2784961E254CDB53004D76BC /* DrinksType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksType.swift; sourceTree = "<group>"; };
+		27E7D98C2559A8B00018A91E /* BeerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				27849601254CCEB3004D76BC /* SceneDelegate.swift */,
 				27849603254CCEB3004D76BC /* ContentView.swift */,
 				2784961E254CDB53004D76BC /* DrinksType.swift */,
+				27E7D98C2559A8B00018A91E /* BeerView.swift */,
 				27849617254CCEF6004D76BC /* Aux.swift */,
 				27849608254CCEB8004D76BC /* Assets.xcassets */,
 				2784960D254CCEB8004D76BC /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 			files = (
 				27849600254CCEB3004D76BC /* AppDelegate.swift in Sources */,
 				27849602254CCEB3004D76BC /* SceneDelegate.swift in Sources */,
+				27E7D98D2559A8B00018A91E /* BeerView.swift in Sources */,
 				27849618254CCEF6004D76BC /* Aux.swift in Sources */,
 				27849607254CCEB3004D76BC /* DrinkSmart.xcdatamodeld in Sources */,
 				2784961F254CDB53004D76BC /* DrinksType.swift in Sources */,
