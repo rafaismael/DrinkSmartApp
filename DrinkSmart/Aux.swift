@@ -9,4 +9,5 @@ import Foundation
 
 class GlobalString: ObservableObject {
     @Published var selectedDate = Date()
+    @Published var progressNum = 0
 }
