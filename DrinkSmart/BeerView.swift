@@ -27,7 +27,8 @@ struct BeerView: View {
                     ForEach(Array(stride(from: 1000, through: 0, by:-100)), id: \.self) { i in
                         Text("\(i)")
                             .bold()
-                            .padding(.leading)
+                            .padding(.leading,30)
+                            .frame(width:80)
                        
                     }
                 }

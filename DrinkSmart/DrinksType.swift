@@ -29,7 +29,7 @@ struct DrinksType: View {
                 if filterDrink == "" || filterDrink == "W" || filterDrink == "Wa" || filterDrink == "Wat" || filterDrink == "Wate" || filterDrink == "Water"  {
                
                     NavigationLink(destination: BeerView()){
-                        Image("water").resizable().frame(width: 50, height:75).padding()}
+                        Image("water").resizable().frame(width: 50, height:75).padding()}.navigationBarBackButtonHidden(true)
                     }
                     
                 
