@@ -4,10 +4,11 @@
 //
 //  Created by Rafael Oliveira on 2020-10-30.
 //
-
+/*
 import SwiftUI
 
-struct DrinksType: View {
+
+struct DrinksTypse: View {
     
     @State private var filterDrink = ""
     
@@ -60,8 +61,12 @@ struct DrinksType: View {
         
 }}
 
-struct DrinksType_Previews: PreviewProvider {
+
+
+struct DrinksTypse_Previews: PreviewProvider {
     static var previews: some View {
         DrinksType()
     }
 }
+
+ */

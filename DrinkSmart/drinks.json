@@ -1,0 +1,48 @@
+[
+	{
+        "id": "EF1CC5BB-4785-4D8E-AB98-5FA4E00B6A66",
+		"name": "Water",
+		"items": [
+			{
+                "id": "EDCD038C-036F-4C40-826F-61C88CD84DDD",
+				"name": "Water",
+                "photo":"water",
+                "color": "blue"
+                
+			}
+		]
+	},
+	{
+		"name": "Alcoholic",
+        "id": "3D97FAB4-50AC-40FC-9BF0-3F46BB6A92F5",
+		"items": [
+			{
+                "id": "D44AAEBC-BF4F-42CD-8C37-0FEF772A5B69",
+				"name": "Beer",
+                "photo": "beer",
+                "color": "yellow"
+                
+			},
+			{
+                "id": "2BAD20C5-D007-4BBE-B074-8CF0F256A42F",
+				"name": "Red Wine",
+                "photo":"red-wine",
+                "color": "red"
+				
+			}
+		]
+	},
+	{
+		"name": "Coffee",
+        "id": "1C89DAFD-7653-4EF2-BF20-C51A159BAC43",
+		"items": [
+			{
+                "id": "AB7E38EA-05A7-426A-AFF3-B3A32B3E86BF",
+				"name": "Coffee",
+                "photo":"coffee",
+                "color": "brown"
+               
+			}
+		]
+	}
+]

@@ -12,26 +12,26 @@ import CoreData
 struct ContentView: View {
     @ObservedObject var tabManager = TabMenuManager()
     //@EnvironmentObject var globalString: GlobalString
-    @State var selectedDate = Date()
+    //@State var selectedDate = Date()
     //@Environment(\.managedObjectContext) var managedObjectContext
     //@FetchRequest(entity: Drink.entity(), sortDescriptors:[]) var drinkData: FetchedResults<Drink>
     
-    @State private var dateAdded = Date()
+    //@State private var dateAdded = Date()
+    @ObservedObject var myGlobalString = GlobalString()
     
     var body: some View {
-        
+        NavigationView{
         VStack{
             
             switch tabManager.lastSelected {
             case 0:
-                Image("wave")
-                    .resizable()
-                    .frame(width:.infinity, height: 190)
-                    .edgesIgnoringSafeArea(.horizontal)
-                    Spacer()
-              
-                    AddButton()
-                
+                HeaderHome(globalString: myGlobalString)
+               
+                    NavigationLink(destination: DrinksType()){
+                        AddButton()
+                           
+                    }
+                   
             case 1:
                 Text("Star")
             case 2:
@@ -47,23 +47,46 @@ struct ContentView: View {
                 .padding(.leading, 30)
                 .padding(.trailing, 30)
         }
-   /*
-        NavigationView{
-            VStack{
-               
-                    Form{
-                        DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
-                    }
-                
-                    Spacer()
-                CustomTab(menuManager: tabManager)
-                    //NavigationLink(destination: DrinksType()){
-                     //   Text("Add")}
-            }
+        .navigationBarTitle("" , displayMode: .inline)
+        .navigationBarHidden(true)
+       
         }
-}
- */
+          
+        
     }}
+
+
+struct HeaderHome: View{
+    @ObservedObject var globalString: GlobalString
+    var body: some View{
+       
+        ZStack{
+            Image("wave")
+                .resizable()
+                .frame(width:.infinity, height: 190)
+                .edgesIgnoringSafeArea(.horizontal)
+            
+        }
+        
+        ZStack{
+           /*
+            Rectangle()
+                .fill(Colors.blueLight)
+                .frame(width: .infinity, height:45)
+                .shadow(color: Color.black.opacity(0.1),radius:20, x:0.0, y:-20.0)
+          */
+            
+
+            DatePicker("Data", selection: $globalString.selectedDate, displayedComponents: .date)
+                .datePickerStyle(CompactDatePickerStyle())
+                .padding(.leading, 10)
+
+            
+        }//.offset(y:-10)
+    
+    }
+}
+
 struct AddButton: View {
     var body: some View{
        ZStack{
@@ -76,8 +99,6 @@ struct AddButton: View {
                     .foregroundColor(.white)
             }
         }
-       
-        
     }
 }
 
