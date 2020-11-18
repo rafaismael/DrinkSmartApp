@@ -13,11 +13,15 @@ struct ContentView: View {
     @ObservedObject var tabManager = TabMenuManager()
     //@EnvironmentObject var globalString: GlobalString
     //@State var selectedDate = Date()
-    //@Environment(\.managedObjectContext) var managedObjectContext
-    //@FetchRequest(entity: Drink.entity(), sortDescriptors:[]) var drinkData: FetchedResults<Drink>
+    @Environment(\.managedObjectContext) var context
+    @ObservedObject var myGlobalString = GlobalString()
+    @State var dateSelected = Date()
+    @FetchRequest(entity: Drink.entity(), sortDescriptors:[NSSortDescriptor(key: "dateAdded", ascending: true)]) var drinkData: FetchedResults<Drink>
     
     //@State private var dateAdded = Date()
-    @ObservedObject var myGlobalString = GlobalString()
+    
+    
+    var sumMl: Int32 = 0
     
     var body: some View {
         NavigationView{
@@ -25,8 +29,21 @@ struct ContentView: View {
             
             switch tabManager.lastSelected {
             case 0:
+                
                 HeaderHome(globalString: myGlobalString)
-               
+                
+                List {
+                    ForEach(drinkData, id: \.self) { (drink:Drink) in
+                        HStack{
+                            Image("\(drink.drinkName?.lowercased() ?? "water")")
+                            VStack{
+                                Text("\(drink.drinkName!)")
+                                Text("\(drink.drinkMl) mL")
+                                
+                            }
+                        }
+                    }
+                }
                     NavigationLink(destination: DrinksType()){
                         AddButton()
                            
@@ -81,6 +98,7 @@ struct HeaderHome: View{
                 .datePickerStyle(CompactDatePickerStyle())
                 .padding(.leading, 10)
 
+     
             
         }//.offset(y:-10)
     

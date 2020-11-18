@@ -16,8 +16,11 @@ struct BeerView: View {
     let height: CGFloat = 450
     @State private var waterMl = 0.0
     
-   
     
+
+   
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(entity: Drink.entity(), sortDescriptors: []) var drinkData: FetchedResults<Drink>
 
     var item: MenuItem
     
@@ -98,11 +101,14 @@ struct BeerView: View {
                              .frame(width: 50, height: 50)
                             .padding()
                             
-                    
+                        Button(action:
+                                {
+                                    self.addDrink()
+                                }){
                             Image(systemName: "checkmark.circle")
                                  .font(.largeTitle)
                                  .foregroundColor(.white)
-                         
+                        }
                     }
                    
                 }.padding(.leading, 50)
@@ -129,6 +135,19 @@ struct BeerView: View {
     }
 
 
+    func addDrink() {
+        let newDrink = Drink(context:context)
+        newDrink.id = UUID()
+        newDrink.drinkName = item.name
+        newDrink.drinkMl = Int32(progress * 1000)
+        newDrink.dateAdded = Date()
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
 }
 
 struct FillSlider: Shape {
@@ -187,7 +206,9 @@ extension String {
 }
 
 //Slider(value: $waterMl, in: 20...1500, step: 10)
+
 #if DEBUG
+
 struct BeerView_Previews: PreviewProvider {
     var item: MenuItem
     static var previews: some View {
@@ -197,3 +218,4 @@ struct BeerView_Previews: PreviewProvider {
     }
 }
 #endif
+

@@ -30,6 +30,7 @@ struct MenuItem: Codable, Equatable, Identifiable {
 
 struct DrinksType: View {
     
+    
     @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Drink.entity(), sortDescriptors: []) var drinkData: FetchedResults<Drink>
     
@@ -66,23 +67,11 @@ struct DrinksType: View {
         
 }
     
-/*
- func addDrink(requestDrink: String) {
-        let newDrink = Drink(context: context)
-        newDrink.id = UUID()
-        newDrink.drinkName = requestDrink
-        
-        do {
-            try context.save()
-        } catch {
-            print(error)
-        }
-}
-*/
 }
 
 struct DrinksRow: View{
     var item: MenuItem
+
     
     var body: some View{
         NavigationLink(destination: BeerView(item:item)){
@@ -98,6 +87,7 @@ struct DrinksRow: View{
 
 
 struct DrinksType_Previews: PreviewProvider {
+   
     static var previews: some View {
         DrinksType()
     }
