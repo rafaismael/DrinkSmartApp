@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271F15D12565FA6400125B9E /* FilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271F15D02565FA6400125B9E /* FilterList.swift */; };
 		27263C852561DD0B005A589F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27263C842561DD0B005A589F /* Helper.swift */; };
 		27263C882561DD23005A589F /* drinks.json in Resources */ = {isa = PBXBuildFile; fileRef = 27263C872561DD23005A589F /* drinks.json */; };
 		27263C8B2561DD8B005A589F /* DrinksMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27263C8A2561DD8B005A589F /* DrinksMenu.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		271F15D02565FA6400125B9E /* FilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterList.swift; sourceTree = "<group>"; };
 		27263C842561DD0B005A589F /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		27263C872561DD23005A589F /* drinks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drinks.json; sourceTree = "<group>"; };
 		27263C8A2561DD8B005A589F /* DrinksMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinksMenu.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				278495FF254CCEB3004D76BC /* AppDelegate.swift */,
 				27849601254CCEB3004D76BC /* SceneDelegate.swift */,
 				27849603254CCEB3004D76BC /* ContentView.swift */,
+				271F15D02565FA6400125B9E /* FilterList.swift */,
 				2784961E254CDB53004D76BC /* DrinksType.swift */,
 				27E7D98C2559A8B00018A91E /* Liquid.swift */,
 				27263C8A2561DD8B005A589F /* DrinksMenu.swift */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27849600254CCEB3004D76BC /* AppDelegate.swift in Sources */,
+				271F15D12565FA6400125B9E /* FilterList.swift in Sources */,
 				27849602254CCEB3004D76BC /* SceneDelegate.swift in Sources */,
 				27E7D98D2559A8B00018A91E /* Liquid.swift in Sources */,
 				27849618254CCEF6004D76BC /* Aux.swift in Sources */,

@@ -18,7 +18,7 @@ struct BeerView: View {
     
     
 
-   
+    @ObservedObject var globalString = GlobalString()
     @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Drink.entity(), sortDescriptors: []) var drinkData: FetchedResults<Drink>
 
@@ -140,7 +140,7 @@ struct BeerView: View {
         newDrink.id = UUID()
         newDrink.drinkName = item.name
         newDrink.drinkMl = Int32(progress * 1000)
-        newDrink.dateAdded = Date()
+        newDrink.dateAdded = globalString.selectedDate//Date()
         
         do {
             try context.save()

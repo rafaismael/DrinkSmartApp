@@ -11,19 +11,21 @@ import CoreData
 
 struct ContentView: View {
     @ObservedObject var tabManager = TabMenuManager()
-    //@EnvironmentObject var globalString: GlobalString
-    //@State var selectedDate = Date()
+  
     @Environment(\.managedObjectContext) var context
     @ObservedObject var myGlobalString = GlobalString()
-    @State var dateSelected = Date()
-    @FetchRequest(entity: Drink.entity(), sortDescriptors:[NSSortDescriptor(key: "dateAdded", ascending: true)]) var drinkData: FetchedResults<Drink>
     
-    //@State private var dateAdded = Date()
+    @State var selectingDate = Date()
     
+   // @FetchRequest(entity: Drink.entity(), sortDescriptors:[NSSortDescriptor(key: "dateAdded", ascending: true)]) var drinkData: FetchedResults<Drink>
     
-    var sumMl: Int32 = 0
+    @State var MenuView: Bool  = false //criar retorno pro menu
+    
     
     var body: some View {
+        
+       
+        
         NavigationView{
         VStack{
             
@@ -31,19 +33,9 @@ struct ContentView: View {
             case 0:
                 
                 HeaderHome(globalString: myGlobalString)
+                FilterList(filter: myGlobalString.selectedDate)
                 
-                List {
-                    ForEach(drinkData, id: \.self) { (drink:Drink) in
-                        HStack{
-                            Image("\(drink.drinkName?.lowercased() ?? "water")")
-                            VStack{
-                                Text("\(drink.drinkName!)")
-                                Text("\(drink.drinkMl) mL")
-                                
-                            }
-                        }
-                    }
-                }
+               
                     NavigationLink(destination: DrinksType()){
                         AddButton()
                            
@@ -86,22 +78,10 @@ struct HeaderHome: View{
         }
         
         ZStack{
-           /*
-            Rectangle()
-                .fill(Colors.blueLight)
-                .frame(width: .infinity, height:45)
-                .shadow(color: Color.black.opacity(0.1),radius:20, x:0.0, y:-20.0)
-          */
-            
-
             DatePicker("Data", selection: $globalString.selectedDate, displayedComponents: .date)
                 .datePickerStyle(CompactDatePickerStyle())
                 .padding(.leading, 10)
-
-     
-            
-        }//.offset(y:-10)
-    
+        }
     }
 }
 
