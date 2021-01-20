@@ -11,7 +11,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var settings = GlobalString()
+    var globalString = GlobalString()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, context)
+        let contentView = ContentView(globalString: globalString).environment(\.managedObjectContext, context)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 fatalError("Unable to read managed object context.")
             }
             */
-            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(settings))
+            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(globalString))
             //window.rootViewController = UIHostingController(rootView: ContentView().environment(\.managedObjectContext, context))
            //ALTERACAO
             

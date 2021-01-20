@@ -7,6 +7,7 @@
                 "id": "EDCD038C-036F-4C40-826F-61C88CD84DDD",
 				"name": "Water",
                 "photo":"water",
+                "waters": 100,
                 "color": "blue"
                 
 			}
@@ -20,6 +21,7 @@
                 "id": "D44AAEBC-BF4F-42CD-8C37-0FEF772A5B69",
 				"name": "Beer",
                 "photo": "beer",
+                "waters": -100,
                 "color": "yellow"
                 
 			},
@@ -27,6 +29,7 @@
                 "id": "2BAD20C5-D007-4BBE-B074-8CF0F256A42F",
 				"name": "Red Wine",
                 "photo":"red wine",
+                "waters": -160,
                 "color": "red"
 				
 			}
@@ -40,6 +43,7 @@
                 "id": "AB7E38EA-05A7-426A-AFF3-B3A32B3E86BF",
 				"name": "Coffee",
                 "photo":"coffee",
+                "waters": 80,
                 "color": "brown"
                
 			}

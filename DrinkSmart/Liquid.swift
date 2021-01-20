@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BeerView: View {
     
-    var colorDataBase: [String: Color] = ["yellow": .yellow, "blue": .blue, "red": .purple, "brown": Color(red: 255/255, green: 100/255, blue: 140/255)]
+    var colorDataBase: [String: Color] = ["yellow": .yellow, "blue": .blue, "red": .red, "brown": Color(red: 255/255, green: 100/255, blue: 140/255)]
     
     @State var knobPosition: CGFloat = 0.0
     @State var progress: CGFloat = 0.5
@@ -18,10 +18,12 @@ struct BeerView: View {
     
     
 
-    @ObservedObject var globalString = GlobalString()
+    @ObservedObject var globalString: GlobalString
     @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Drink.entity(), sortDescriptors: []) var drinkData: FetchedResults<Drink>
 
+    @Binding var shouldPopToRootView : Bool
+    
     var item: MenuItem
     
     
@@ -29,24 +31,36 @@ struct BeerView: View {
         
         
         VStack{
-            Text("\(item.name.capitalizingFirstLetter())")
-                .font(.title)
-                .foregroundColor(self.colorDataBase[item.color, default: .black])
-                .padding(.bottom, 20)
+            HStack {
+                Image(item.photo)
+                    .resizable()
+                    .frame(width: 50, height: 70)
                 
+                Text("\(item.name.capitalizingFirstLetter())")
+                    .font(.title)
+                    .foregroundColor(self.colorDataBase[item.color, default: .black])
+                   
+                Spacer()
+                
+            }.padding(.all,20)
+                
+            Text("\(progress * 1000,specifier: "%.0f") Ml")
+                    .foregroundColor(self.colorDataBase[item.color, default: .black])
+                    .font(.title)
+                    .frame(width: 150, height: 70)
             
                 
             
             HStack{
-                        VStack(alignment: .center, spacing: 22) {
-                            ForEach(Array(stride(from: 1000, through: 0, by:-100)), id: \.self) { i in
-                                Text("\(i)")
-                                    .bold()
-                                    .padding(.leading,30)
-                                    .frame(width:80)
-                               
-                            }
+                    VStack(alignment: .center, spacing: 22) {
+                        ForEach(Array(stride(from: 1000, through: 0, by:-100)), id: \.self) { i in
+                            Text("\(i)")
+                                .bold()
+                                .padding(.leading,30)
+                                .frame(width:80)
+                           
                         }
+                    }
                     
                     VStack(alignment: .trailing, spacing: 6.5){
                         ForEach(Array(stride(from: 100, through: 0, by:-2)), id: \.self) { i in
@@ -55,7 +69,7 @@ struct BeerView: View {
                                 .frame(width: i%10 == 0 ? 20 : 10, height: 2)
                         }
                     }
-                    
+                
                 ZStack{
                     RoundedRectangle(cornerRadius: 30)
                             .fill(Color.white)
@@ -79,21 +93,49 @@ struct BeerView: View {
                                         }))
                                         .onAppear {
                                             calcInitialPosition()
-                                            }
+                                        }
                     }
-                    
                 VStack{
-                    Image(item.photo)
-                        .resizable()
-                        .frame(width: 50, height: 70)
-                    
-                    Text("\(progress * 1000,specifier: "%.0f") \r\n Ml")
+                    Button(action:
+                            {
+                            if progress < 1 {
+                                progress = self.progress+0.05
+                                knobPosition = self.knobPosition-22
+                                
+                                if progress > 1 {
+                                    progress = 1
+                                    knobPosition = -220
+                                }
+                            }
+                            }){
+                            Image(systemName: "plus.circle")
+                                .frame(width: 20, height: 20, alignment: .top)
+                                .font(.largeTitle)
+                                .foregroundColor(self.colorDataBase[item.color, default: .black])
+                            }
+                    Spacer()
+                    Button(action:
+                            {
+                            if progress > 0 {
+                                progress = self.progress-0.05
+                                knobPosition = self.knobPosition+22
+                                
+                                if progress < 0 {
+                                    progress = 0
+                                    knobPosition = 220
+                                }
+                            }
+                            }){
+                        Image(systemName: "minus.circle")
+                        .frame(width: 20, height: 20, alignment: .top)
+                        .font(.largeTitle)
                         .foregroundColor(self.colorDataBase[item.color, default: .black])
-                        .font(.title)
-                        .frame(width: 80, height: 70)
-                    
-                   
+                    }
+                }.frame(height: 520).padding(.bottom, 20)
                 
+                
+                VStack{
+                    
                     Spacer()
                     ZStack{
                          Circle()
@@ -104,6 +146,7 @@ struct BeerView: View {
                         Button(action:
                                 {
                                     self.addDrink()
+                                    self.shouldPopToRootView = false
                                 }){
                             Image(systemName: "checkmark.circle")
                                  .font(.largeTitle)
@@ -140,6 +183,7 @@ struct BeerView: View {
         newDrink.id = UUID()
         newDrink.drinkName = item.name
         newDrink.drinkMl = Int32(progress * 1000)
+        newDrink.drinkRealMl = (Int32(item.waters) * Int32(progress * 1000))/100
         newDrink.dateAdded = globalString.selectedDate//Date()
         
         do {
@@ -148,6 +192,8 @@ struct BeerView: View {
             print(error)
         }
     }
+    
+  
 }
 
 struct FillSlider: Shape {
@@ -207,15 +253,21 @@ extension String {
 
 //Slider(value: $waterMl, in: 20...1500, step: 10)
 
+
+
+
 #if DEBUG
 
 struct BeerView_Previews: PreviewProvider {
+   
     var item: MenuItem
     static var previews: some View {
         NavigationView{
-            BeerView(item: MenuItem.example)
+            BeerView(globalString: GlobalString(), shouldPopToRootView: .constant(true) , item: MenuItem.example)
         }
     }
 }
+ 
 #endif
+
 
